@@ -1,6 +1,6 @@
 <?php
 include 'iCache.php';
-include 'memcache_1.php';
+//include 'memcache_1.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +19,7 @@ class Mem implements iCache{
     private $mem;
     private $memCacheEnabled;
     
-    function MemCache(){
+    function __construct(){
         
         $this->mem = new Memcache();
         $this->memCacheEnabled = $this->mem->connect('localhost', 11211);        
@@ -60,9 +60,22 @@ class Mem implements iCache{
 
     public function isEmpty()
     {
-        $m = new Memcached();
-        $m->set('key', 0796800135);
-                //return ($this->mem->fetchAll() == 0);
+        //$m = new Memcache();
+        //$m->connect('localhost');
+       // $m->set('key', 0796800135);
+       for($i = 0; $i < 10; $i++)
+        return true;
+       return false;
+    }
+    
+    function getAllItems()
+    {
+        $i = 0;
+        $array = array();
+        while($this->mem->get($i) != NULL)
+            $array[] = $this->mem->get($i);
+        
+        return $array;
     }
 
     public function getItem($key, $callback = NULL, $casToken = 0) {
