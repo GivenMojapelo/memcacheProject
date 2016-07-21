@@ -14,10 +14,10 @@ include 'MemCache.php';
 class DBConnection {
     //put your code here
     
-    private $host = 'unxqa01.kazazoom.com';
-    private $dbName = 'brainwavedb_qa';
-    private $username = 'brainapp_qa';
-    private $password = 'purea2244';
+    private $host = '-----';
+    private $dbName = '-----';
+    private $username = '-----';
+    private $password = '----------';
     private $cache = NULL;
        
     function DBConnection()
